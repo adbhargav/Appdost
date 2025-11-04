@@ -161,7 +161,7 @@ const Profile = () => {
                   onError={(e) => {
                     console.error('Avatar failed to load:', e.target.src);
                     // Try alternative URL construction
-                    const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000/${user.avatar.replace(/^\/+/, '')}`;
+                    const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `https://appdost-sipb.onrender.com/${user.avatar.replace(/^\/+/, '')}`;
                     e.target.src = avatarUrl;
                     e.target.onerror = null; // Prevent infinite loop
                   }}
@@ -369,7 +369,7 @@ const Profile = () => {
                       onError={(e) => {
                         console.error('Avatar failed to load:', e.target.src);
                         // Try alternative URL construction
-                        const avatarUrl = connection.avatar.startsWith('http') ? connection.avatar : `http://localhost:5000/${connection.avatar.replace(/^\/+/, '')}`;
+                        const avatarUrl = connection.avatar.startsWith('http') ? connection.avatar : `https://appdost-sipb.onrender.com/${connection.avatar.replace(/^\/+/, '')}`;
                         e.target.src = avatarUrl;
                         e.target.onerror = null; // Prevent infinite loop
                       }}
