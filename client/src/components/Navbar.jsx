@@ -120,7 +120,7 @@ const Navbar = () => {
                       onError={(e) => {
                         console.error('Avatar failed to load:', e.target.src);
                         // Try alternative URL construction
-                        const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000/${user.avatar.replace(/^\/+/, '')}`;
+                        const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `https://appdost-sipb.onrender.com/${user.avatar.replace(/^\/+/, '')}`;
                         e.target.src = avatarUrl;
                         e.target.onerror = null; // Prevent infinite loop
                       }}
@@ -247,7 +247,7 @@ const Navbar = () => {
                   onError={(e) => {
                     console.error('Avatar failed to load:', e.target.src);
                     // Try alternative URL construction
-                    const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000/${user.avatar.replace(/^\/+/, '')}`;
+                    const avatarUrl = user.avatar.startsWith('http') ? user.avatar : `https://appdost-sipb.onrender.com/${user.avatar.replace(/^\/+/, '')}`;
                     e.target.src = avatarUrl;
                     e.target.onerror = null; // Prevent infinite loop
                   }}
