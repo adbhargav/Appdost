@@ -162,7 +162,7 @@ const Network = () => {
                     onError={(e) => {
                       console.error('Avatar failed to load:', e.target.src);
                       // Try alternative URL construction
-                      const avatarUrl = selectedUser.avatar.startsWith('http') ? selectedUser.avatar : `http://localhost:5000/${selectedUser.avatar.replace(/^\/+/, '')}`;
+                      const avatarUrl = selectedUser.avatar.startsWith('http') ? selectedUser.avatar : `https://appdost-sipb.onrender.com/${selectedUser.avatar.replace(/^\/+/, '')}`;
                       e.target.src = avatarUrl;
                       e.target.onerror = null; // Prevent infinite loop
                     }}
@@ -250,7 +250,7 @@ const Network = () => {
                             onError={(e) => {
                               console.error('Image failed to load:', e.target.src);
                               // Try alternative URL construction
-                              const imageUrl = post.image.startsWith('http') ? post.image : `http://localhost:5000/${post.image.replace(/^\/+/, '')}`;
+                              const imageUrl = post.image.startsWith('http') ? post.image : `https://appdost-sipb.onrender.com/${post.image.replace(/^\/+/, '')}`;
                               e.target.src = imageUrl;
                               e.target.onerror = null; // Prevent infinite loop
                             }}
@@ -398,13 +398,13 @@ const Network = () => {
                       <div className="flex items-center">
                         {u.avatar ? (
                           <img 
-                            src={`http://localhost:5000/${u.avatar}`} 
+                            src={`https://appdost-sipb.onrender.com/${u.avatar}`} 
                             alt={u.name} 
                             className="rounded-xl w-12 h-12 object-cover"
                             onError={(e) => {
                               console.error('Avatar failed to load:', e.target.src);
                               // Try alternative URL construction
-                              const avatarUrl = u.avatar.startsWith('http') ? u.avatar : `http://localhost:5000/${u.avatar.replace(/^\/+/, '')}`;
+                              const avatarUrl = u.avatar.startsWith('http') ? u.avatar : `https://appdost-sipb.onrender.com/${u.avatar.replace(/^\/+/, '')}`;
                               e.target.src = avatarUrl;
                               e.target.onerror = null; // Prevent infinite loop
                             }}
