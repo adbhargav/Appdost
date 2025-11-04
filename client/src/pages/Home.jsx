@@ -181,7 +181,7 @@ const Home = () => {
                     onError={(e) => {
                       console.error('Avatar failed to load:', e.target.src);
                       // Try alternative URL construction
-                      const avatarUrl = post.author.avatar.startsWith('http') ? post.author.avatar : `http://localhost:5000/${post.author.avatar.replace(/^\/+/, '')}`;
+                      const avatarUrl = post.author.avatar.startsWith('http') ? post.author.avatar : `https://appdost-sipb.onrender.com/${post.author.avatar.replace(/^\/+/, '')}`;
                       e.target.src = avatarUrl;
                       e.target.onerror = null; // Prevent infinite loop
                     }}
@@ -206,7 +206,7 @@ const Home = () => {
                     onError={(e) => {
                       console.error('Image failed to load:', e.target.src);
                       // Try alternative URL construction
-                      const imageUrl = post.image.startsWith('http') ? post.image : `http://localhost:5000/${post.image.replace(/^\/+/, '')}`;
+                      const imageUrl = post.image.startsWith('http') ? post.image : `https://appdost-sipb.onrender.com/${post.image.replace(/^\/+/, '')}`;
                       e.target.src = imageUrl;
                       e.target.onerror = null; // Prevent infinite loop
                     }}
