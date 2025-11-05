@@ -29,7 +29,7 @@ const Profile = () => {
         bio: user.bio || '',
         avatar: user.avatar || ''
       });
-      // Don't add the prefix here since we'll add it in the image src
+      // Don't add the prefix here since we'll add it in the image 
       setAvatarPreview(user.avatar || '');
     }
   }, [user]);
