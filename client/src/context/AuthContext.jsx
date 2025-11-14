@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load user from token when app starts
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -18,10 +17,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // Fetch logged-in user profile
   const loadUser = async () => {
     try {
-      const res = await api.get('/api/users/profile');
+      const res = await api.get('/users/profile');
       setUser(res.data);
     } catch (err) {
       console.error('Error loading user:', err);
@@ -33,10 +31,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // LOGIN USER
   const login = async (email, password) => {
     try {
-      const res = await api.post('/api/auth/login', { email, password });
+      const res = await api.post('/auth/login', { email, password });
 
       if (res.data.token) {
         localStorage.setItem('token', res.data.token);
@@ -48,17 +45,16 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (err) {
       console.error('Login error:', err);
-      return {
-        success: false,
-        message: err.response?.data?.message || 'Login failed',
+      return { 
+        success: false, 
+        message: err.response?.data?.message || 'Login failed' 
       };
     }
   };
 
-  // REGISTER USER
   const register = async (name, email, password) => {
     try {
-      const res = await api.post('/api/auth/register', { name, email, password });
+      const res = await api.post('/auth/register', { name, email, password });
 
       if (res.data.token) {
         localStorage.setItem('token', res.data.token);
@@ -70,27 +66,23 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (err) {
       console.error('Registration error:', err);
-      return {
-        success: false,
-        message: err.response?.data?.message || 'Registration failed',
+      return { 
+        success: false, 
+        message: err.response?.data?.message || 'Registration failed' 
       };
     }
   };
 
-  // UPDATE USER PROFILE
   const updateUser = async (userData) => {
     try {
       let res;
-
-      // Handle file upload (profile picture)
+      
       if (userData instanceof FormData) {
-        res = await api.put('/api/users/profile', userData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+        res = await api.put('/users/profile', userData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
         });
       } else {
-        res = await api.put('/api/users/profile', userData);
+        res = await api.put('/users/profile', userData);
       }
 
       setUser(res.data);
@@ -102,14 +94,13 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (err) {
       console.error('Update user error:', err);
-      return {
-        success: false,
-        message: err.response?.data?.message || 'Update failed',
+      return { 
+        success: false, 
+        message: err.response?.data?.message || 'Update failed' 
       };
     }
   };
 
-  // LOGOUT
   const logout = () => {
     localStorage.removeItem('token');
     delete api.defaults.headers.common['Authorization'];
